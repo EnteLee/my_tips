@@ -1,0 +1,21 @@
+# null count
+ - select sum(isnull(col)) from table;
+
+
+SELECT created_time FROM RAW.Master
+group by created_time;
+
+select createdTime from RAW.price
+group by createdTime
+order by createdTime;
+
+select createdTime from geotogong.StockHistory
+group by createdTime
+order by createdTime;
+
+select max(trd_dt) from geotogong.stocksprice
+group by trd_dt;
+
+SELECT created_time FROM geotogong.gtg_master
+group by created_time
+order by created_time;

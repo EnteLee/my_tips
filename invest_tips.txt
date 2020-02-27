@@ -1,0 +1,7 @@
+# 리서치 보고서 YoY, QoQ, MoM, YTD, MTD 의미
+ - YoY : Year on Year : 전년 (동기) 대비 증감률(수익률, 상승률)
+ - QoQ : Quarter on Quarter : 전분기 대비 증감율
+ - MoM : Month on Month : 전월 대비 증감률
+ - YTD : Year to Date : 연초 대비 증감률
+ - MTD : Month to Date : 월초 대비 증감률
+ 

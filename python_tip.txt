@@ -1,0 +1,67 @@
+# series.str.contains('ex') -> ex 포함된 문자열 찾아줌
+# series.str.startswith() or endswith() -> 특정 문자열로 시작하거나 끝나는.
+# 둘다 df col에도 적용 가능. | 로 쓰면 or도 가능
+
+# df.pivot('index(row)','col','value')
+# col 3개 정해서. 1번을 행으로, 2번을 열로, 3번은 값으로.
+
+# 함수 앞뒤 추가 작업 부착시 @데코레이터
+
+# 코드 원칙
+ - class명 전부 대문자.
+ - class 내 전역변수 전부 대문자
+ - class 내부 함수 소문자 시작 중간 대문자
+ - 내부 변수들 소문자(_)
+
+# asyncio 정리
+ - await
+  - function의 컨트롤을 다시 원래의 event loop로 돌려주는 역할.
+  - 즉, event를 실행시키고, control을 돌려준 뒤, 해당 event가 완료될 때 반응하는 callback method 기능을 동시에 한다.
+  - await 뒤에 coroutine obj, future obj, task obj을 지정 시 객체가 끝날 때까지 기다린 뒤 결과 반환
+  - 암튼 native coroutine 앞에는 다 달아줘야됨.
+
+ - asyncio 구현의 경우. 보통 하나의 기능을 여러 겹의 작은 coroutine으로 쪼개고 wrapper를 만들어 구현
+ - 시간이 오래 걸리는 작업이 반드시 coroutine으로 구현되야 한다.
+
+ - asyncio.ensure_future(coroutine obj or future obj)
+  - task obj 를 리턴
+
+ - asyncio.gather(coroutines(future obj, task obj))
+  - 전달 받은 여러 개의 coroutines를 동시에 실행하고, 그 coroutines들에 대한 future를 return.
+  - 이후 future.result() 함수 호출하여 return 값 가져오기 가능 (안되는데?)
+  - future에는 함수가 실행되고 완료가 되는 시점에 값이 채워지고, 그 전에는 비어있다.
+  - 리스트가 아닌 위치 인수로 객체를 받으므로, task를 list로 만들었으면 *tasks 같이 언패킹해서 넣어줌
+  - 결과 순서 바뀔 수 있음 (future obj 리스트 만들때 순서랑)
+
+ - asyncio.get_event_loop()
+  - 정확히는 현재의 이벤트 루프를 가져옴
+  - 근데, 이전에 set_event_loop()가 아직 호출 전이면, 새 이벤트 루프 만들어서 현재 이벤트 루프로 설정함.
+
+
+ - loop.run_until_complete(future obj)
+  - 해당 future obj가 완료 될때까지 실행
+
+ - loop.close()
+  - 이벤트 루프를 닫음.
+
+ - loop.run_in_executor(스레드풀(보통 None), 실행할 함수, 함수인자1, 인자2, ...)
+  - urlopen이나 response.read 같은 결과가 나올때까지 코드 실행이 중단 되는 함수를 블로킹i/o 함수라 함
+  - native coroutine 안에서 blocking i/o 함수 실행시 run_in_executor로 타 스레드 병렬실행 필요.
+
+ - async with
+  - 클래스나 함수를 비동기 처리뒤 결과를 반환
+  - with 다음에 클래스의 인스턴스를 지정하고, as 뒤에 저장할 변수 지정
+  - __aenter__(실행할 내용)와 __aexit__(with 완전히 벗어나면 호출) 메서드 필수
+
+ - async for
+  - 비동기로 반복
+  - __aiter__와 __anext__메서드 필수.
+
+
+
+
+
+
+
+sk_1ce29cb3f0f14fe387c6e18a30e86a2d
+pk_4eb6303ff25f44a78ddb3648357220a6
